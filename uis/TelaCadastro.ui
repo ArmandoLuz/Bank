@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cadastro</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(122, 82, 208);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>480</width>
+        <height>560</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>480</width>
+        <height>560</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="labelTelaLogin">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>40</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 18pt &quot;Verdana&quot;;
+</string>
+       </property>
+       <property name="text">
+        <string>Cadastro</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="inputSobreCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>180</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(130, 130,130);
+	border-radius: 20px;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QLineEdit:hover{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}
+
+QLineEdit:focus{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}</string>
+       </property>
+       <property name="maxLength">
+        <number>20</number>
+       </property>
+       <property name="placeholderText">
+        <string>SOBRENOME</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="inputSenhaCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>360</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(130, 130,130);
+	border-radius: 20px;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QLineEdit:hover{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}
+
+QLineEdit:focus{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>SENHA</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>450</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(122, 82, 208);
+	border-radius: 5px;
+	padding: 15px;
+	color: rgb(122, 82, 208);
+}
+
+QPushButton:pressed{
+	background-color: rgb(122, 82, 208);
+	color: rgb(0, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>CONTINUAR</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="inputEmailCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>300</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(130, 130,130);
+	border-radius: 20px;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QLineEdit:hover{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}
+
+QLineEdit:focus{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}</string>
+       </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>EMAIL</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="inputNomeCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>120</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(130, 130,130);
+	border-radius: 20px;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QLineEdit:hover{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}
+
+QLineEdit:focus{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>30</number>
+       </property>
+       <property name="placeholderText">
+        <string>NOME</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="inputCpfCad">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>240</y>
+         <width>280</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+	font: 8pt &quot;Verdana&quot; ;
+	border: 2px solid rgb(130, 130,130);
+	border-radius: 20px;
+	padding: 15px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QLineEdit:hover{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}
+
+QLineEdit:focus{
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(122, 82, 208);
+}</string>
+       </property>
+       <property name="maxLength">
+        <number>11</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>CPF</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelAvisoCad">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>90</y>
+         <width>201</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 200, 200);
+background-color: rgba(0, 0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonBackCad">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>51</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	font: 18pt &quot;Verdana&quot; ;
+	border: rgb(255, 255, 255);
+	color: rgb(122, 82, 208);
+}
+
+QPushButton:pressed{
+	color: rgb(0, 255, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>&lt;</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

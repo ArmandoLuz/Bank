@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="transfer-money">
+    <file>money_hover.png</file>
+    <file>usuario.png</file>
+    <file>money.png</file>
+    <file>saque.png</file>
+    <file>extrato.png</file>
+    <file>deposito.png</file>
+  </qresource>
+  <qresource/>
+</RCC>
