@@ -5,6 +5,7 @@
 # Created by: The Resource Compiler for PyQt5 (Qt v5.9.7)
 #
 # WARNING! All changes made in this file will be lost!
+#Py
 
 from PyQt5 import QtCore
 
