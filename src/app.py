@@ -11,6 +11,7 @@ from deposito import Deposito
 from transfere import Transfere
 from sacar import Saque 
 from extrato import Extrato
+#APP
 
 class AppWindow(QMainWindow):
     def __init__(self):
