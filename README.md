@@ -11,12 +11,12 @@ This project aims to build a digital bank, based on the Python language for buil
 </h4>
 
 ### Infos
-Esta é uma aplicação de banco simples, resultado de um trabalho acadêmico da matéria de Programação Orientada a Obejtos II.
-* Caso queira utilizar esta aplicação, é necessário instalar algumas depêndencias, como o Python 3, PyQt5 e MySQL. 
+This is a simple database application, the result of an academic work in the Object Oriented Programming II subject.
+* If you want to use this application, it is necessary to install some dependencies, such as Python 3, PyQt5 and MySQL. 
 
 ### Pré-requeriments
-Você irá precisar ter instalado na sua máquina o [Git](https://git-scm.com/). 
-Além disso, recomendo fortemente que use um editor de código como o [VSCode](https://code.visualstudio.com/)
+You will need to have installed on your machine the [Git](https://git-scm.com/). 
+Also, I strongly recommend that you use a code editor like [VSCode](https://code.visualstudio.com/)
 
 #### clone the repository
 $ git clone <https://github.com/ArmandoLuz/DigitalBank.git>
@@ -30,5 +30,8 @@ $ sudo apt-get install python3-pyqt5
 
 ##### MySQL 
 $ sudo apt install mysql-server
+
+#### Run
+To run the application, enter the src directory and run the app.py file
 
 
