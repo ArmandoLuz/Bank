@@ -9,3 +9,7 @@ This project aims to build a digital bank, based on the Python language for buil
 <h4 align="center"> 
 	🚧  Status 🚀 Under construction...  🚧
 </h4>
+
+### Infos
+Esta é uma aplicação de banco simples, resultado de um trabalho acadêmico da matéria de Programação Orientada a Obejtos II.
+* Caso queira utilizar esta aplicação, é necessário instalar algumas depêndencias, como o Python 3, PyQt5 e MySQL. 
