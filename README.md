@@ -13,3 +13,7 @@ This project aims to build a digital bank, based on the Python language for buil
 ### Infos
 Esta é uma aplicação de banco simples, resultado de um trabalho acadêmico da matéria de Programação Orientada a Obejtos II.
 * Caso queira utilizar esta aplicação, é necessário instalar algumas depêndencias, como o Python 3, PyQt5 e MySQL. 
+
+### Pré-requeriments
+Você irá precisar ter instalado na sua máquina o git [Git](https://git-scm.com/). 
+Além disso, recomendo fortemente que use um editor de código como o VSCode [VSCode](https://code.visualstudio.com/)
