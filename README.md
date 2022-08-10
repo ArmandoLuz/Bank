@@ -4,4 +4,4 @@
 ![PyQt](https://img.shields.io/badge/Framework-PyQt5-blue)
 
 ### Index
-This project aims to build a digital database, based on the Python language for building the system and on the PyQt framework for building the graphical interfaces.
+This project aims to build a digital bank, based on the Python language for building the system and on the PyQt framework for building the graphical interfaces.
