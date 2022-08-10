@@ -6,17 +6,6 @@
 ### Index
 This project aims to build a digital bank, based on the Python language for building the system and on the PyQt framework for building the graphical interfaces.
 
-=================
-<!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
-<!--te-->
+<h4 align="center"> 
+	🚧  Status 🚀 Under construction...  🚧
+</h4>
