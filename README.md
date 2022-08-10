@@ -15,5 +15,20 @@ Esta é uma aplicação de banco simples, resultado de um trabalho acadêmico da
 * Caso queira utilizar esta aplicação, é necessário instalar algumas depêndencias, como o Python 3, PyQt5 e MySQL. 
 
 ### Pré-requeriments
-Você irá precisar ter instalado na sua máquina o git [Git](https://git-scm.com/). 
-Além disso, recomendo fortemente que use um editor de código como o VSCode [VSCode](https://code.visualstudio.com/)
+Você irá precisar ter instalado na sua máquina o [Git](https://git-scm.com/). 
+Além disso, recomendo fortemente que use um editor de código como o [VSCode](https://code.visualstudio.com/)
+
+#### clone the repository
+$ git clone <https://github.com/ArmandoLuz/DigitalBank.git>
+
+#### install the dependencies
+##### Python
+$ sudo apt-get install python3
+
+##### PyQt5 
+$ sudo apt-get install python3-pyqt5
+
+##### MySQL 
+$ sudo apt install mysql-server
+
+
