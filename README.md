@@ -2,6 +2,7 @@
 ![GitHub](https://img.shields.io/github/license/ArmandoLuz/DigitalBank?logo=MIT)
 ![python](https://img.shields.io/badge/Python-3.9.12-blue)
 ![PyQt](https://img.shields.io/badge/Framework-PyQt5-blue)
+![MySQL](https://img.shields.io/badge/MySQL-8.0.30-blue)
 
 ### Index
 This project aims to build a digital bank, based on the Python language for building the system and on the PyQt framework for building the graphical interfaces.
