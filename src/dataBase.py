@@ -45,6 +45,25 @@ class Database:
                                 ENGINE = InnoDB;""")
         
         self._conection.commit()
+    
+    #Função que busca registros existentes através de um CPF.
+    def search(self, CPF):
+        self._cursor.execute("SELECT CPF FROM users WHERE users.CPF = %s", (CPF,))
+        return list(self._cursor)
+
+    #Função que adiciona um registro ao banco de dados.
+    def register(self, CPF, name, last_name, email, password):
+        status = self.search(CPF)
+
+        if len(status) == 0:
+
+            self._cursor.execute("INSERT INTO bank.users (CPF, Name, Last_name, email, Password) VALUES (%s, %s, %s, %s, %s);", (CPF, name, last_name, email, password))
+            self._cursor.execute("INSERT INTO bank.accounts (users_CPF, saldo) VALUES (%s, %s);", (CPF, 0.0))
+            self._conection.commit()
+            return True
+
+        else:
+            return False
 
 
 db = Database()
