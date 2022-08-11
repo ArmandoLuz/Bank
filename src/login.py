@@ -1,6 +1,5 @@
 from PyQt5 import uic
-from dataBase import database
-import json
+from dataBase import db
 
 class Login:
     def __init__(self, appWindow):
@@ -40,15 +39,15 @@ class Login:
 
         #Verificando a senha e entrando na dashboard
         status = 1
-        for num in database.lista_contas.keys():
-            if database.lista_contas[num].titular.cpf == cpf and database.lista_contas[num].titular.senha == senha:
-                
+        user = db.search(cpf)
+
+        if len(user) != 0:
+            if senha == user[0][-1]:
                 self._window.inputCPFLogin.setText("")
                 self._window.inputSenhaLogin.setText("")
                 status = 0
-                self._appWindow.go_to_dash(database.lista_contas[num])
-                break
-            
+                self._appWindow.go_to_dash(cpf)
+
         #Seta o label de status
         if status == 0:
             self._window.labelLoginStatus.setText("")

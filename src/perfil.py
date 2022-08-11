@@ -1,4 +1,5 @@
 from PyQt5 import uic
+from dataBase import db
 
 class Perfil:
     def __init__(self, AppWindow):
@@ -24,11 +25,13 @@ class Perfil:
         self._buttonBack.clicked.connect(lambda: self.back())
         self._buttonExit.clicked.connect(lambda: self.exit())
 
-    def _load_info(self, account):
+    def _load_info(self, cpf):
         #Carregando as informacoes do perfil
-        self._window.perfilConta.setText("Conta: " + str(account.numero))
-        self._window.emailPerfil.setText("Email: " + account.titular.email)
-        self._window.nomePerfil.setText(account.titular.nome + ' ' + account.titular.sobrenome)
+        self._user = db.search(cpf)
+        self._account = db.search_account(cpf)
+        self._window.perfilConta.setText("Conta: " + str(self._account[0][0]))
+        self._window.emailPerfil.setText("Email: " + self._user[0][3])
+        self._window.nomePerfil.setText(self._user[0][1] + ' ' + self._user[0][2])
 
     def back(self):
         #Faz o retorno para a dashboard

@@ -1,6 +1,6 @@
 from PyQt5 import uic
 from conta import Cliente
-from dataBase import database
+from dataBase import db
 
 class Register:
     def __init__(self, AppWindow):
@@ -41,11 +41,8 @@ class Register:
         email = self._email.text()
         senha = self._senha.text()
 
-        #Instancia do objeto cliente
-        cliente = Cliente(nome, sobrenome, cpf, email, senha)
-
         #Inserindo no banco de dados
-        status = database.cadastra(cliente)
+        status = db.register(nome, sobrenome, cpf, email, senha)
 
         #Verificando o status da operação.
         if status == True:

@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from dataBase import database
+from dataBase import db
 
 class Transfere:
 
