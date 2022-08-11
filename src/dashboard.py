@@ -1,5 +1,5 @@
 from PyQt5 import uic
-from dataBase import database
+from dataBase import db
 
 class Dash:
 
@@ -33,23 +33,24 @@ class Dash:
         self._buttonSaca.clicked.connect(lambda: self.saque())
         self._buttonExtrato.clicked.connect(lambda: self.extrato())
 
-    def _load_info(self, account):
+    def _load_info(self, cpf):
         #Armazena o cliente no self para outras operações
-        self._account = account
-        self._window.labelUserDash.setText("Olá, " + self._account.titular.nome)
-        self._window.labelSaldo.setText("R$ " + str(self._account.saldo))
+        self._user = db.search(cpf)
+        self._account = db.search_account(cpf)
+        self._window.labelUserDash.setText("Olá, " + self._user[0][1])
+        self._window.labelSaldo.setText("R$ " + str(self._account[0][1]))
 
     def perfil(self):
-        self._appWindow.go_to_perfil(self._account)
+        self._appWindow.go_to_perfil(self._user[0][0])
 
     def deposito(self):
-        self._appWindow.go_to_deposito(self._account)
+        self._appWindow.go_to_deposito(self._user[0][0])
 
     def transferir(self):
-        self._appWindow.go_to_transfere(self._account)
+        self._appWindow.go_to_transfere(self._user[0][0])
 
     def saque(self):
-        self._appWindow.go_to_saque(self._account)
+        self._appWindow.go_to_saque(self._user[0][0])
 
     def extrato(self):
-        self._appWindow.go_to_extrato(self._account)
+        self._appWindow.go_to_extrato(self._user[0][0])
