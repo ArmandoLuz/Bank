@@ -6,7 +6,7 @@ class Database:
         #Estabelecendo uma conexão com o database previamente criado.
         self._conection = mysql.connector.connect(host='localhost', 
                                                     user='root', 
-                                                    password='75395AlB', 
+                                                    password='******', 
                                                     auth_plugin = 'mysql_native_password', 
                                                     database='bank')
         self._cursor = self._conection.cursor()
@@ -48,7 +48,7 @@ class Database:
     
     #Função que busca registros existentes através de um CPF.
     def search(self, CPF):
-        self._cursor.execute("SELECT CPF FROM users WHERE users.CPF = %s", (CPF,))
+        self._cursor.execute("SELECT * FROM users WHERE users.CPF = %s", (CPF,))
         return list(self._cursor)
 
     #Função que adiciona um registro ao banco de dados.
@@ -65,5 +65,7 @@ class Database:
         else:
             return False
 
-
+    def search_account(self, cpf):
+        self._cursor.execute("SELECT id, saldo FROM bank.users, bank.accounts WHERE users.CPF = %s AND accounts.users_CPF = users.CPF", (cpf,))
+        return list(self._cursor)
 db = Database()
