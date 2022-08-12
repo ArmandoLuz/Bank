@@ -42,7 +42,7 @@ class Register:
         senha = self._senha.text()
 
         #Inserindo no banco de dados
-        status = db.register(nome, sobrenome, cpf, email, senha)
+        status = db.register(cpf, nome, sobrenome, email, senha)
 
         #Verificando o status da operação.
         if status == True:
