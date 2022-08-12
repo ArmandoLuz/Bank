@@ -1,4 +1,5 @@
 from PyQt5 import uic
+from dataBase import db
 
 class Saque:
 
@@ -29,22 +30,22 @@ class Saque:
         self._buttonSaque.clicked.connect(lambda: self.saque())
         self._back_saque.clicked.connect(lambda: self.back())
 
-    def _load_info(self, account):
-        self._account = account
+    def _load_info(self, cpf):
+        self._cpf = cpf
 
     def back(self):
         #Reseta os campos
         self._valor.setText("")
         self._window.labelStatusSaque.setText("")
         #Faz o retorno para a dashboard
-        self._appWindow._dash._load_info(self._account)
+        self._appWindow._dash._load_info(self._cpf)
         self._appWindow.go_to(3)
     
     def saque(self):
-        if self._valor.text() == '':
-            self._window.labelStatusSaque.setText("Digite um valor!")
+        if self._valor.text() == '' or float(self._valor.text()) <= 0:
+            self._window.labelStatusSaque.setText("Digite um valor válido!")
 
         else:
-            status = self._account.saca(float(self._valor.text()))
+            status = db.withdraw(self._cpf, float(self._valor.text()))
             self._window.labelStatusSaque.setText(status)
             self._window.inputValorSaque.setText("")
