@@ -29,8 +29,8 @@ class Transfere:
         self._backTrans.clicked.connect(lambda: self.back())
         self._buttonTrans.clicked.connect(lambda: self.transfere())
 
-    def _load_info(self, account):
-        self._account = account
+    def _load_info(self, cpf):
+        self._cpf = cpf
     
     def back(self):
         #Reseta os campos
@@ -39,23 +39,16 @@ class Transfere:
         self._window.labelTransStts.setText("")
 
         #Faz o retorno para a dashboard
-        self._appWindow._dash._load_info(self._account)
+        self._appWindow._dash._load_info(self._cpf)
         self._appWindow.go_to(3)
 
     def transfere(self):
         #Buscando o destinatario
-        if self._destino.text() == "" or self._valor.text() == "":
-            self._window.labelTransStts.setText("Insira todos os dados!")
+        if self._destino.text() == "" or self._valor.text() == "" or float(self._valor.text()) <= 0:
+            self._window.labelTransStts.setText("Insira dados válidos!")
             return 0
         else:
-            destino = database.busca_user(int(self._destino.text()))
-
-        if destino != None:
-            status = self._account.transfere(destino, float(self._valor.text()))
+            status = db.trasnfer(self._cpf, int(self._destino.text()), float(self._valor.text()))
             self._window.labelTransStts.setText(status)
-            self._window.inputValorTrans.setText("")
-            self._window.inpNumTrans.setText("")
-        else:
-            self._window.labelTransStts.setText("conta não encontrada!")
             self._window.inputValorTrans.setText("")
             self._window.inpNumTrans.setText("")
