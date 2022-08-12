@@ -1,5 +1,6 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
+from dataBase import db
 
 class Extrato:
 
@@ -25,16 +26,16 @@ class Extrato:
         #Faz a ligacao dos eventos
         self._buttonBackExtra.clicked.connect(lambda: self.back())
     
-    def _load_info(self, account):
-        self._account = account
-        self._load_data(self._account)
+    def _load_info(self, cpf):
+        self._cpf = cpf
+        self._load_data(self._cpf)
 
-    def _load_data(self, account):
-        extrato = account.historico.historico()
+    def _load_data(self, cpf):
+        extrato = db.extract(cpf)
         self._vbox = QVBoxLayout()
         self._widget = QWidget()
         for t in extrato:
-            label = QLabel(text=t)
+            label = QLabel(text=t[-1])
             label.setStyleSheet("color: rgb(122, 82, 208);")
             self._vbox.addWidget(label)
         
