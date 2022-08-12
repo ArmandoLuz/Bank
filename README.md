@@ -38,6 +38,7 @@ $ sudo apt-get install python3-pyqt5
 $ sudo apt install mysql-server
 
 #### Run
+Configure your database connection in the dataBase.py file on line 7
 To run the application, enter the src directory and run the app.py file
 
 
