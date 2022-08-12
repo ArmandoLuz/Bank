@@ -39,29 +39,36 @@ class AppWindow(QMainWindow):
         self._stack.addWidget(self._saque.window)
         self._stack.addWidget(self._extrato.window)
 
+    #Chama um determinada tela
     def go_to(self, id):
         self._stack.setCurrentIndex(id)
 
+    #Chama a tela da dashboard
     def go_to_dash(self, account):
         self._dash._load_info(account)
         self.go_to(3)
     
+    #Chama a tela de perfil
     def go_to_perfil(self, client):
         self._perfil._load_info(client)
         self.go_to(4)
     
+    #Chama a tela de depósito
     def go_to_deposito(self, account):
         self._deposito._load_info(account)
         self.go_to(5)
     
+    #Chama a tela de transferencia
     def go_to_transfere(self, account):
         self._transfere._load_info(account)
         self.go_to(6)
-
+    
+    #Chama a tela de saque
     def go_to_saque(self, account):
         self._saque._load_info(account)
         self.go_to(7)
 
+    #Chama a tela de extrato
     def go_to_extrato(self, account):
         self._extrato._load_info(account)
         self.go_to(8)
