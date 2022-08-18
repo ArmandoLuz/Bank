@@ -6,7 +6,7 @@ class Database:
         #Estabelecendo uma conexão com o database previamente criado.
         self._conection = mysql.connector.connect(host='localhost', 
                                                     user='root', 
-                                                    password='******', 
+                                                    password='75395AlB', 
                                                     auth_plugin = 'mysql_native_password', 
                                                     database='bank')
         self._cursor = self._conection.cursor()
@@ -58,7 +58,7 @@ class Database:
 
     #Função que busca o saldo de uma conta através do seu número.
     def get_saldo(self, num):
-        self._cursor.execute("SELECT saldo FROM bank.accounts WHERE accounts.id = %s", (num,))
+        self._cursor.execute("SELECT users_CPF, saldo FROM bank.accounts WHERE accounts.id = %s", (num,))
         return list(self._cursor)
 
     #Função que adiciona um registro ao banco de dados.
@@ -69,7 +69,7 @@ class Database:
         #Verifica se o registro não existe.
         if len(status) == 0:
             #Insere um novo registro
-            self._cursor.execute("INSERT INTO bank.users (CPF, Name, Last_name, email, Password) VALUES (%s, %s, %s, %s, %s);", (CPF, name, last_name, email, password))
+            self._cursor.execute("INSERT INTO bank.users (CPF, Name, Last_name, email, Password) VALUES (%s, %s, %s, %s, MD5(%s));", (CPF, name, last_name, email, password))
             self._cursor.execute("INSERT INTO bank.accounts (users_CPF, saldo) VALUES (%s, %s);", (CPF, 0.0))
             self._conection.commit()
             return True
@@ -80,10 +80,14 @@ class Database:
     #Função de transferência de saldo.
     def trasnfer(self, cpf, num, value):
 
-        #Pessquisando uma conta através do CPF
+        #Pesquisando uma conta de origem através do CPF
         account = self.search_account(cpf)
-        #Coletando o saldo de uma conta atrés do seu número
+
+        #Coletando o saldo de uma conta de destino atrés do seu número
         saldo_destino = self.get_saldo(num)
+
+        if cpf == saldo_destino[0][0]:
+            return "Operação não permitida!"
 
         #Verificando se há saldo suficiente e se a conta de destino existe
         if account[0][1] > value and len(saldo_destino) != 0:
@@ -146,5 +150,17 @@ class Database:
     def extract(self, cpf):
         self._cursor.execute("SELECT bank.historic.id, info FROM bank.historic, bank.users, bank.accounts WHERE users.CPF = %s AND accounts.users_CPF = users.CPF AND historic.accounts_id = accounts.id", (cpf,))
         return list(self._cursor)
+
+    #Realiza o login
+    def login(self, cpf, password):
+        user = db.search(cpf)
+
+        if len(user) != 0:
+            if password == user[0][-1]:
+                return True
+            else:
+                return False
+        else:
+            return False
 
 db = Database()
