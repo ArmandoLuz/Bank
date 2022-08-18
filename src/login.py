@@ -1,4 +1,5 @@
 from PyQt5 import uic
+import hashlib
 from dataBase import db
 
 class Login:
@@ -38,19 +39,20 @@ class Login:
         senha = self._senha.text()
 
         #Verificando a senha e entrando na dashboard
-        status = 1
-        user = db.search(cpf)
+        status = False
 
-        if len(user) != 0:
-            if senha == user[0][-1]:
-                self._window.inputCPFLogin.setText("")
-                self._window.inputSenhaLogin.setText("")
-                status = 0
-                self._appWindow.go_to_dash(cpf)
+        #Encriptando a senha
+        password = hashlib.md5(senha.encode()).hexdigest()
+        
+        #Chamando a função de login
+        status = db.login(cpf, password)
 
         #Seta o label de status
-        if status == 0:
+        if status == True:
             self._window.labelLoginStatus.setText("")
+            self._window.inputCPFLogin.setText("")
+            self._window.inputSenhaLogin.setText("")
+            self._appWindow.go_to_dash(cpf)
         else:
             self._window.labelLoginStatus.setText("CPF ou senha incorretos!")
         
