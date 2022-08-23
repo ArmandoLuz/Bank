@@ -6,7 +6,7 @@ class Database:
         #Estabelecendo uma conexão com o database previamente criado.
         self._conection = mysql.connector.connect(host='localhost', 
                                                     user='root', 
-                                                    password='75395AlB', 
+                                                    password='*******', 
                                                     auth_plugin = 'mysql_native_password', 
                                                     database='bank')
         self._cursor = self._conection.cursor()
