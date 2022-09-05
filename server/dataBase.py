@@ -1,11 +1,15 @@
 import mysql.connector
 import hashlib
+import threading
+import time
+
+sinc = threading.Lock()
 
 class Database:
 
     def __init__(self):
         #Estabelecendo uma conexão com o database previamente criado.
-        self._conection = mysql.connector.connect(host='localhost', 
+        self._conection = mysql.connector.connect(host='localhost',
                                                     user='root', 
                                                     password='75395AlB', 
                                                     auth_plugin = 'mysql_native_password', 
@@ -102,9 +106,11 @@ class Database:
         #Verifica se o registro não existe.
         if len(status) == 0:
             #Insere um novo registro
+            sinc.acquire()
             self._cursor.execute("INSERT INTO bank.users (CPF, Name, Last_name, email, Password) VALUES (%s, %s, %s, %s, MD5(%s));", (CPF, name, last_name, email, password))
             self._cursor.execute("INSERT INTO bank.accounts (users_CPF, saldo) VALUES (%s, %s);", (CPF, 0.0))
             self._conection.commit()
+            sinc.release()
             return "True"
 
         else:
@@ -130,6 +136,7 @@ class Database:
         if account[0][1] > value:
 
             #Depositando o valor na conta de destino
+            sinc.acquire()
             self._cursor.execute("UPDATE bank.accounts SET saldo = %s WHERE accounts.id = %s", (saldo_destino[0][-1] + value, num))
             
             #Subtraindo valor da conta de origem
@@ -144,6 +151,7 @@ class Database:
             self._cursor.execute("INSERT INTO bank.historic (accounts_id, info) VALUES (%s, %s)", (num, info)) 
 
             self._conection.commit()
+            sinc.release()
             return "Transferência realizada com sucesso!"
 
         else:
@@ -158,6 +166,7 @@ class Database:
         account = self.search_account(cpf)
 
         #Realiza o depósito
+        sinc.acquire()
         self._cursor.execute("UPDATE bank.accounts SET saldo = %s WHERE accounts.users_CPF = %s", (account[0][-1] + value, cpf))
 
         #Adiciona um registro ao histórico
@@ -165,6 +174,7 @@ class Database:
         self._cursor.execute("INSERT INTO bank.historic (accounts_id, info) VALUES (%s, %s)", (account[0][0], info))
 
         self._conection.commit()
+        sinc.release()
         return "Depósito realizado com sucesso!"
 
     def withdraw(self, values: list):
@@ -178,6 +188,7 @@ class Database:
         #Verifica se há saldo disponível
         if account[0][-1] >= value:
             #Realizando o saque
+            sinc.acquire()
             self._cursor.execute("UPDATE bank.accounts SET saldo = %s WHERE accounts.users_CPF = %s", (account[0][-1] - value, cpf))
 
             #Adicionando um registro
@@ -185,6 +196,7 @@ class Database:
             self._cursor.execute("INSERT INTO bank.historic (accounts_id, info) VALUES (%s, %s)", (account[0][0], info))
 
             self._conection.commit()
+            sinc.release()
 
             return "Saque realizado com sucesso!"
         else:

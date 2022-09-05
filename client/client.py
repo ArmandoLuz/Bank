@@ -4,8 +4,8 @@ class Client:
 
     def __init__(self):
         #Definindo o host e a porta
-        self._host = 'localhost'
-        self._port = 8000
+        self._host = ''
+        self._port = 8001
         #Criando novo socket
         self._client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         #Criando um endereço para o socket
@@ -21,6 +21,3 @@ class Client:
         #Recebendo a resposta do servidor
         return self._client_socket.recv(1024).decode()
 
-    @property
-    def return_(self):
-        return self._return_
