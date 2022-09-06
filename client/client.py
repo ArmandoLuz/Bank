@@ -5,7 +5,7 @@ class Client:
     def __init__(self):
         #Definindo o host e a porta
         self._host = ''
-        self._port = 8001
+        self._port = 8000
         #Criando novo socket
         self._client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         #Criando um endereço para o socket

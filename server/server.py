@@ -4,11 +4,12 @@ import threading
 
 class Server:
 
-    def __init__(self):
+    def __init__(self, sinc):
         #Definindo o host e a porta
         self._host = ''
-        self._port = 8001
+        self._port = 8000
         #Criando novo socket
+        self._sinc = sinc
         self._serv_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         #Criando um endereço para o socket
         self._addr = (self._host, self._port)
@@ -26,17 +27,18 @@ class Server:
         #Rodando o socket em modo escuta
         while True:
             #Habilitando o servidor para aceitar conexões
-            self._serv_socket.listen(6)
+            self._serv_socket.listen(1)
             print("Aguardando conexões...")
             #Aceitando conexões
             self._conection, self._client_address = self._serv_socket.accept()
             #Criando uma nova thread para a conexão
-            new_thread = Comunication(self._client_address, self._conection, self._operations)
+            new_thread = Comunication(self._client_address, self._conection, self._operations, self._sinc)
             new_thread.start()
 
 class Comunication(threading.Thread):
-    def __init__(self, client_address, client_socket, operations):
+    def __init__(self, client_address, client_socket, operations, sinc):
         threading.Thread.__init__(self)
+        self._sinc = sinc
         self._csocket = client_socket
         self._client_address = client_address
         self._operations = operations
@@ -47,21 +49,24 @@ class Comunication(threading.Thread):
            
             try:
                 #Recebendo comando
-                operation = self._csocket.recv(1024).decode()
+                operation = self._csocket.recv(3072).decode()
                 #Particionando o comando
                 operation = operation.split(',')
                 print(operation)
                 #Executando o comando
+                self._sinc.acquire()
                 return_ = self._operations[operation[0]](operation[1:])
+                self._sinc.release()
                 print(return_)
                 #Enviando a resposta
                 self._csocket.send(return_.encode())
             
             except:
                 print("Conexão encerrada")
-                self._csocket.close()
+                #self._csocket.close()
                 break 
 
 if __name__=="__main__":
-    server = Server()
+    sinc = threading.Lock()
+    server = Server(sinc)
     server.conection()
